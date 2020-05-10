@@ -1,7 +1,22 @@
-.bodyDiv{
+.bodyDiv {
   height: 100vh;
+  color: #b0bec5;
 }
 
-div.bodyContainer{
+div.bodyContainer {
   margin-top: 50px !important;
+}
+
+.tabs a {
+  color: #80deea;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.tabs .active {
+  background: inherit !important;
+}
+
+.auth-content {
+  height: 515px !important;
 }
