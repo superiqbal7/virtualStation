@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
       this.loginForm.reset();
       setTimeout(() => {
         this.router.navigate(['streams']);
-      }, 5000);
+      }, 6000);
 
     }, err => {
       this.showSpinner = false;
