@@ -1,3 +1,4 @@
+import { TokenInterceptor } from './services/token-interceptor';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -6,7 +7,8 @@ import { AuthModule } from './modules/auth/auth.module';
 import { AuthRoutingModule } from './modules/auth-routing/auth-routing.module';
 import { StreamsModule } from './modules/streams/streams.module';
 import { StreamsRoutingModule } from './modules/streams-routing/streams-routing.module';
-import { CookieService} from 'ngx-cookie-service';
+import { CookieService } from 'ngx-cookie-service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 
 @NgModule({
@@ -20,7 +22,12 @@ import { CookieService} from 'ngx-cookie-service';
     StreamsModule,
     StreamsRoutingModule
   ],
-  providers: [ CookieService],
+  providers: [CookieService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
