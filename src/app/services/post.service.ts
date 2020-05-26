@@ -8,7 +8,7 @@ const BASEURL = "http://localhost:3000/api/chatapp";
   providedIn: 'root'
 })
 export class PostService {
-
+  
   constructor(
     private http: HttpClient
   ) { }
