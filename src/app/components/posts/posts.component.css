@@ -4,13 +4,17 @@
   height: 10px;
 }
 
+.notLiked {
+  color: #0aa59d !important;
+}
+
 .liked {
   color: #e03933 !important;
 }
 
 .title {
   font-weight: bold;
-  color: #28dbf3;
+  color: #0aa59d;
 }
 
 .time {

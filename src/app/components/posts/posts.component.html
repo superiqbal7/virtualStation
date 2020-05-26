@@ -1,4 +1,4 @@
-<ul class="collection" *ngFor="let post of posts">
+<ul class="collection col s12 m12 l10" *ngFor="let post of posts">
   <li class="collection-item avatar">
     <img src="https://cdn.costumewall.com/wp-content/uploads/2018/09/mr-peanutbutter.jpg" alt="" class="circle" />
     <span class="title">{{post.username}}</span>
@@ -11,15 +11,16 @@
   <div class="row">
     <div class="col s12">
       <div class="card">
+        <div class="card-content">
+          <p>{{post.post}}&#x2764;</p>
+        </div>
         <div class="card-image">
-          <div class="card-content">
-            <p>{{post.post}}&#x2764;</p>
-          </div>
           <img class="postImage"
             src="https://www.euractiv.com/wp-content/uploads/sites/2/2019/09/shutterstock_438538876-800x450.jpg" />
         </div>
-        <div class="card-action liked">
-          <i class="material-icons">thumb_up</i>
+        <div class="card-action">
+          <i (click)="LikePost(post)" [ngClass]="(!CheckInLikesArray(post.likes, user.username)) ? 'notLiked':'liked'"
+            class="material-icons">thumb_up</i>
           <span class="iconSpan">
             {{post.totalLikes}}
           </span>

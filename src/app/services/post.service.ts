@@ -8,7 +8,7 @@ const BASEURL = "http://localhost:3000/api/chatapp";
   providedIn: 'root'
 })
 export class PostService {
-  
+
   constructor(
     private http: HttpClient
   ) { }
@@ -18,5 +18,8 @@ export class PostService {
   }
   getAllPosts(): Observable<any> {
     return this.http.get(`${BASEURL}/posts`);
+  }
+  addLike(body): Observable<any> {
+    return this.http.post(`${BASEURL}/post/add-like`, body);
   }
 }
