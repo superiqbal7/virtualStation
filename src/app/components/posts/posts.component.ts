@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { PostService } from 'src/app/services/post.service';
 
@@ -15,9 +16,11 @@ export class PostsComponent implements OnInit {
   socket: any;
   posts = [];
   user: any;
+  commentIcon = 0;
   constructor(
     private postService: PostService,
-    private tokenService: TokenService
+    private tokenService: TokenService,
+    private router: Router
   ) {
     this.socket = io('http://localhost:3000')
   }
@@ -52,6 +55,11 @@ export class PostsComponent implements OnInit {
 
   CheckInLikesArray(arr, username){
     return _.some(arr, {username: username});
+  }
+
+  OpenCommentBox(post){
+    this.router.navigate(['post', post._id]);
+    //this.commentIcon == 1 ? this.commentIcon = 0 : this.commentIcon = 1;
   }
 
 }
