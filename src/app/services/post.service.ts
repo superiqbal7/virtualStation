@@ -28,4 +28,8 @@ export class PostService {
       comment
     })
   }
+
+  getPost(id): Observable<any> {
+    return this.http.get(`${BASEURL}/post/${id}`);
+  }
 }

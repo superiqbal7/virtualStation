@@ -2,63 +2,53 @@
   <div class="col s12 m4">
     <a>
       <span>Posts</span>
-      <p>10</p>
+      <p class="num">10</p>
     </a>
   </div>
   <div class="col s12 m4">
     <a>
       <span>Following</span>
-      <p>10</p>
+      <p class="num">15</p>
     </a>
   </div>
   <div class="col s12 m4">
     <a>
       <span>Followers</span>
-      <p>10</p>
+      <p class="num">7</p>
     </a>
   </div>
 </div>
 <ul class="collection with-header">
+  <li class="collection-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">
+    <a [routerLink]="['/streams']">
+      <div>
+        Streams<a href="#!" class="secondary-content"><i class="material-icons">announcement</i></a>
+      </div>
+    </a>
+  </li>
   <li class="collection-item">
     <div>
-      Streams<a href="#!" class="secondary-content"
-        ><i class="material-icons">announcement</i></a
-      >
+      People<a href="#!" class="secondary-content"><i class="material-icons">people</i></a>
     </div>
   </li>
   <li class="collection-item">
     <div>
-      People<a href="#!" class="secondary-content"
-        ><i class="material-icons">people</i></a
-      >
+      Follwing<a href="#!" class="secondary-content"><i class="material-icons">people</i></a>
     </div>
   </li>
   <li class="collection-item">
     <div>
-      Follwing<a href="#!" class="secondary-content"
-        ><i class="material-icons">people</i></a
-      >
+      Followers<a href="#!" class="secondary-content"><i class="material-icons">people_outline</i></a>
     </div>
   </li>
   <li class="collection-item">
     <div>
-      Followers<a href="#!" class="secondary-content"
-        ><i class="material-icons">people_outline</i></a
-      >
+      Photos<a href="#!" class="secondary-content"><i class="material-icons">photo_library</i></a>
     </div>
   </li>
   <li class="collection-item">
     <div>
-      Photos<a href="#!" class="secondary-content"
-        ><i class="material-icons">photo_library</i></a
-      >
-    </div>
-  </li>
-  <li class="collection-item">
-    <div>
-      Notifications<a href="#!" class="secondary-content"
-        ><i class="material-icons">alarm</i></a
-      >
+      Notifications<a href="#!" class="secondary-content"><i class="material-icons">alarm</i></a>
     </div>
   </li>
 </ul>

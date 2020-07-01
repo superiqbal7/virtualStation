@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -19,7 +20,8 @@ import { CommentsComponent } from 'src/app/components/comments/comments.componen
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule
   ],
   exports: [StreamsComponent, ToolbarComponent, SideComponent, PostFormComponent, CommentsComponent],
   providers: [TokenService, PostService]
