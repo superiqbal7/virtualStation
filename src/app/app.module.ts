@@ -9,12 +9,11 @@ import { StreamsModule } from './modules/streams/streams.module';
 import { StreamsRoutingModule } from './modules/streams-routing/streams-routing.module';
 import { CookieService } from 'ngx-cookie-service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { CommentsComponent } from './components/comments/comments.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
