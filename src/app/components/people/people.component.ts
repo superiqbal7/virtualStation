@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from 'src/app/services/users.service';
-
+import _ from 'lodash';
+import { TokenService } from 'src/app/services/token.service';
 @Component({
   selector: 'app-people',
   templateUrl: './people.component.html',
@@ -8,12 +9,15 @@ import { UsersService } from 'src/app/services/users.service';
 })
 export class PeopleComponent implements OnInit {
   users = [];
+  loggedInUser: any;
 
   constructor(
-    private userService: UsersService
+    private userService: UsersService,
+    private tokenService: TokenService
   ) { }
 
   ngOnInit(): void {
+    this.loggedInUser = this.tokenService.GetPayload();
     this.GetUsers();
   }
 
@@ -21,6 +25,7 @@ export class PeopleComponent implements OnInit {
     this.userService.GetAllUsers()
       .subscribe(data => {
         console.log(data);
+        _.remove(data.result, { username: this.loggedInUser.username })
         this.users = data.result;
         console.log(this.users);
       });
