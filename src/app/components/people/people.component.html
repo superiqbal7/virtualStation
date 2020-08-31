@@ -22,7 +22,10 @@
                 {{user.username}}
               </h3>
               <p>Bangladesh</p>
-              <button class="btn">Follow</button>
+              <p>{{CheckInArray(userArr, user._id)}}</p>
+              <button class="btn" *ngIf="!CheckInArray(userArr, user._id)" (click)="FollowUser(user)">Follow</button>
+              <button class="btn disabled" *ngIf="CheckInArray(userArr, user._id)"
+                (click)="FollowUser(user)">Following</button>
               <a href="" class="secondary-content">
                 <i class="material-icons">chat</i>
               </a>
