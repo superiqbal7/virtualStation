@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { StreamsComponent } from 'src/app/components/streams/streams.component';
 import { AuthGuard } from 'src/app/services/auth.guard';
 import { PeopleComponent } from 'src/app/components/people/people.component';
+import { FollowingComponent } from 'src/app/components/following/following.component';
 
 const routes: Routes = [
   {
@@ -20,7 +21,12 @@ const routes: Routes = [
     path: 'people',
     component: PeopleComponent,
     canActivate: [AuthGuard]
-  }
+  },
+  {
+    path: 'people/following',
+    component: FollowingComponent,
+    canActivate: [AuthGuard]
+  },
 ]
 
 @NgModule({
