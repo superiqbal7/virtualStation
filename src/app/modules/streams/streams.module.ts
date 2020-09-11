@@ -14,11 +14,12 @@ import { CommentsComponent } from 'src/app/components/comments/comments.componen
 import { PeopleComponent } from 'src/app/components/people/people.component';
 import { UsersService } from 'src/app/services/users.service';
 import { FollowingComponent } from '../../components/following/following.component';
+import { FollowersComponent } from '../../components/followers/followers.component';
 
 
 
 @NgModule({
-  declarations: [StreamsComponent, ToolbarComponent, SideComponent, PostFormComponent, PostsComponent, CommentsComponent, PeopleComponent, FollowingComponent,],
+  declarations: [StreamsComponent, ToolbarComponent, SideComponent, PostFormComponent, PostsComponent, CommentsComponent, PeopleComponent, FollowingComponent, FollowersComponent,],
   imports: [
     CommonModule,
     FormsModule,
@@ -26,7 +27,7 @@ import { FollowingComponent } from '../../components/following/following.compone
     HttpClientModule,
     RouterModule
   ],
-  exports: [StreamsComponent, ToolbarComponent, SideComponent, PostFormComponent, CommentsComponent, PeopleComponent, FollowingComponent],
+  exports: [StreamsComponent, ToolbarComponent, SideComponent, PostFormComponent, CommentsComponent, PeopleComponent, FollowingComponent, FollowersComponent],
   providers: [TokenService, PostService, UsersService]
 })
 export class StreamsModule { }

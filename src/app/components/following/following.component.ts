@@ -30,6 +30,8 @@ export class FollowingComponent implements OnInit {
   GetUser() {
     this.userService.GetUserById(this.loggedInUser._id)
       .subscribe(data => {
+        console.log(data);
+
         this.following = data.result.following;
         console.log(this.following);
       });
@@ -40,7 +42,6 @@ export class FollowingComponent implements OnInit {
       console.log(data);
       this.socket.emit('refresh',{});
     })
-
   }
 
 }
