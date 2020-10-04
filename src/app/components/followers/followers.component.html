@@ -23,7 +23,7 @@
               </h3>
               <p>Bangladesh</p>
               <button class="btn" *ngIf="!CheckInArray(following, user.follower._id)"
-                (click)="FollowUser(user.follower._id)">Follow</button>
+                (click)="FollowUser(user.follower)">Follow</button>
               <button class="btn disabled following"
                 *ngIf="CheckInArray(following, user.follower._id)">Following</button>
               <a href="" class="secondary-content">
