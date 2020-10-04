@@ -12,6 +12,7 @@ import _ from 'lodash';
 export class FollowersComponent implements OnInit {
 
   followers =[];
+  following =[];
   loggedInUser: any;
   socket: any;
 
@@ -34,6 +35,7 @@ export class FollowersComponent implements OnInit {
       .subscribe(data => {
         console.log(data);
         this.followers = data.result.followers;
+        this.following = data.result.following;
         console.log(this.followers);
         console.log(this.followers[0].follower._id);
 
@@ -49,8 +51,6 @@ export class FollowersComponent implements OnInit {
   }
 
   CheckInArray(arr, id) {
-    // console.log(arr);
-    // console.log(id);
     console.log(arr);
     console.log(id);
 

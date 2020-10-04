@@ -58,10 +58,12 @@ export class PeopleComponent implements OnInit {
       this.socket.emit('refresh',{});
     })
   }
-
+  //count =0;
   CheckInArray(arr, id) {
     // console.log(arr);
     // console.log(id);
+    //console.log(this.count++);
+
     const result = _.find(arr, ['userFollowed._id', id])
     if(result){
       return true;
