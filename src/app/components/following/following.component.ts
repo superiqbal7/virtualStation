@@ -34,7 +34,9 @@ export class FollowingComponent implements OnInit {
 
         this.following = data.result.following;
         console.log(this.following);
-      });
+      },
+      err => console.log(err)
+      );
   }
 
   UnFollowUser(user){
