@@ -22,7 +22,7 @@ export class UsersService {
   }
 
   GetUserByUserName(username): Observable<any> {
-    return this.http.get(`${BASEURL}/user/${username}`);
+    return this.http.get(`${BASEURL}/username/${username}`);
   }
 
   FollowUser(userFollowed): Observable<any> {
