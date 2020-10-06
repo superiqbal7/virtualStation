@@ -1,6 +1,8 @@
+import io from 'socket.io-client';
+import * as moment from 'moment';
+
 import { TokenService } from 'src/app/services/token.service';
 import { Component, OnInit } from '@angular/core';
-import io from 'socket.io-client';
 import { UsersService } from 'src/app/services/users.service';
 @Component({
   selector: 'app-notifications',
@@ -27,8 +29,30 @@ export class NotificationsComponent implements OnInit {
 
   GetUser(){
     this.userService.GetUserById(this.user._id).subscribe(data => {
-      console.log(data);
+      this.notifications = data.result.notifications.reverse();
     })
+    // this.userService.GetUserByUserName(this.user.username).subscribe(data => {
+    //   console.log(data);
+    // })
+  }
+
+  MarkNotification(data){
+    this.userService.MarkNotification(data._id).subscribe(value=>{
+      console.log(value);
+      this.socket.emit('refresh');
+    })
+  }
+
+  DeleteNotification(data){
+    this.userService.MarkNotification(data._id, true).subscribe(value => {
+      console.log(value);
+      this.socket.emit('refresh');
+    })
+  }
+
+
+  TimeFromNow(time){
+    return moment(time).fromNow();
   }
 
 }
