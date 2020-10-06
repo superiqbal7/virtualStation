@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TokenService } from 'src/app/services/token.service';
 import { Router } from '@angular/router';
+import * as M from 'materialize-css';
 
 @Component({
   selector: 'app-toolbar',
@@ -19,6 +20,12 @@ export class ToolbarComponent implements OnInit {
     this.user = this.tokenService.GetPayload();
     //console.log(this.user);
 
+    const dropDownElement = document.querySelector('.dropdown-trigger');
+    M.Dropdown.init(dropDownElement, {
+      allignment: 'right',
+      hover: true,
+      coverTrigger: false
+    })
   }
   logout() {
     this.tokenService.DeleteToken()
