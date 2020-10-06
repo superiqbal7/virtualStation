@@ -36,4 +36,11 @@ export class UsersService {
       userFollowed
     })
   }
+
+  MarkNotification(id, deleteValue?): Observable<any>{
+    return this.http.post(`${BASEURL}/mark/${id}`, {
+      id,
+      deleteValue
+    });
+  }
 }
