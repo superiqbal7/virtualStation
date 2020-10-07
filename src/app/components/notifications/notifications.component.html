@@ -14,8 +14,9 @@
           <img class="circle" src="http://placehold.it/50x50" alt="">
           <span class="title">{{data.message}}</span>
           <a class="secondary-content">
-            <i *ngIf="!data.read" class="material-icons" style="color: brown;">brightness_1</i>
-            <i *ngIf="data.read" class="material-icons" style="color: darkgray;">panorama_fish_eye</i>
+            <i *ngIf="!data.read" class="material-icons" style="color: brown;">radio_button_unchecked
+            </i>
+            <i *ngIf="data.read" class="material-icons" style="color: darkgray;">radio_button_checked</i>
           </a>
           <p class="time">{{TimeFromNow(data.created)}}</p>
           <div>
