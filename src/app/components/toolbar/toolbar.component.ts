@@ -5,6 +5,7 @@ import * as M from 'materialize-css';
 import { UsersService } from 'src/app/services/users.service';
 import * as moment from 'moment';
 import io from 'socket.io-client';
+import _ from 'lodash';
 @Component({
   selector: 'app-toolbar',
   templateUrl: './toolbar.component.html',
@@ -14,6 +15,7 @@ export class ToolbarComponent implements OnInit {
   user: any;
   notifications = [];
   socket: any;
+  count = [];
 
   constructor(
     private tokenService: TokenService,
@@ -31,9 +33,17 @@ export class ToolbarComponent implements OnInit {
     const dropDownElement = document.querySelector('.dropdown-trigger');
     M.Dropdown.init(dropDownElement, {
       allignment: 'right',
-      hover: true,
+      hover: false,
       coverTrigger: false
     })
+
+    const dropDownElement2 = document.querySelector('.dropdown-button');
+    M.Dropdown.init(dropDownElement2,{
+      allignment: 'right',
+      hover: false,
+      coverTrigger: false,
+    }
+  );
 
     this.GetNotifications();
     this.socket.on('refreshPage', () => {
@@ -44,6 +54,16 @@ export class ToolbarComponent implements OnInit {
   GetNotifications(){
     this.userService.GetUserById(this.user._id).subscribe(data => {
       this.notifications = data.result.notifications.reverse();
+      const value = _.filter(this.notifications, ['read', false]);
+      console.log(value);
+      this.count = value;
+    },
+    //reload if token expired
+    err => {
+      if (err.error.token === null) {
+        this.tokenService.DeleteToken();
+        this.router.navigate(['']);
+      }
     });
   }
 
@@ -51,6 +71,7 @@ export class ToolbarComponent implements OnInit {
     this.tokenService.DeleteToken()
     this.router.navigate(['']);
   }
+
 
   GoToHome(){
     this.router.navigate(['streams']);
