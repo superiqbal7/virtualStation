@@ -1,0 +1,37 @@
+<ul class="collection col s12 m12 l10" *ngFor="let post of topPosts">
+  <li class="collection-item avatar">
+    <img src="https://cdn.costumewall.com/wp-content/uploads/2018/09/mr-peanutbutter.jpg" alt="" class="circle" />
+    <span class="title">{{post.username}}</span>
+    <p class="time">
+      {{TimeFromNow(post.created)}} <br />
+      Dhaka
+    </p>
+    <!-- <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a> -->
+  </li>
+  <div class="row">
+    <div class="col s12">
+      <div class="card">
+        <div class="card-content">
+          <p>{{post.post}}&#x2764;</p>
+        </div>
+        <div class="card-image">
+          <img class="postImage"
+            src="https://www.euractiv.com/wp-content/uploads/sites/2/2019/09/shutterstock_438538876-800x450.jpg" />
+        </div>
+        <div class="card-action">
+          <i (click)="LikePost(post)" [ngClass]="(!CheckInLikesArray(post.likes, user.username)) ? 'notLiked':'liked'"
+            class="material-icons">thumb_up</i>
+          <span class="iconSpan">
+            {{post.totalLikes}}
+          </span>
+          <i class="material-icons" [ngClass]="(!CheckInLikesArray(post.comments, user.username)) ? 'notLiked':'liked'"
+            (click)="OpenCommentBox(post)">chat</i>
+          <span class="iconSpan">
+            {{post.comments.length }}
+          </span>
+          <!-- <app-comments *ngIf="commentIcon"></app-comments> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</ul>
