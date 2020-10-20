@@ -1,20 +1,23 @@
 <div class="row">
   <div class="col s12 m4">
-    <a>
+    <a [routerLink]="['/streams']">
       <span>Posts</span>
-      <p class="num">10</p>
+      <p class="num" *ngIf="userData.posts.length > 0">{{userData.posts.length}}</p>
+      <p class="num" *ngIf="userData.posts.length <= 0">0</p>
     </a>
   </div>
   <div class="col s12 m4">
-    <a>
+    <a [routerLink]="['/people','following']">
       <span>Following</span>
-      <p class="num">15</p>
+      <p class="num" *ngIf="userData.following.length > 0">{{userData.following.length}}</p>
+      <p class="num" *ngIf="userData.following.length <= 0">0</p>
     </a>
   </div>
   <div class="col s12 m4">
-    <a>
+    <a [routerLink]="['/people','followers']">
       <span>Followers</span>
-      <p class="num">7</p>
+      <p class="num" *ngIf="userData.followers.length > 0">{{userData.followers.length}}</p>
+      <p class="num" *ngIf="userData.followers.length <= 0">0</p>
     </a>
   </div>
 </div>
