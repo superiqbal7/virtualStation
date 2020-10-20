@@ -1,6 +1,6 @@
 .bodyDiv {
   height: 100vh;
-  color: #b0bec5;
+  color: #070729;
 }
 
 div.bodyContainer {
@@ -8,9 +8,10 @@ div.bodyContainer {
 }
 
 .tabs a {
-  color: #80deea;
+  color: #110a36;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 20px;
+  background-color: #ffe082;
 }
 
 .tabs .active {
