@@ -28,6 +28,7 @@ export class SignupComponent implements OnInit {
 
   init(){
     this.signupForm = this.formBuilder.group({
+      name: ['', Validators.required],
       username: ['', Validators.required],
       email: ['', [Validators.email, Validators.required]],
       password: ['', [Validators.required]]
