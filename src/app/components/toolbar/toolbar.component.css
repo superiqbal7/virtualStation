@@ -21,7 +21,7 @@ nav {
   display: block;
   text-align: center;
   margin: 0 auto;
-  margin-top: 15px;
+  margin-top: 0px;
 }
 
 .nav-div img {
@@ -31,7 +31,7 @@ nav {
   border-radius: 50%;
   border: 10px solid rgba(255, 255, 255, 0.3);
   text-align: center;
-  margin: 0 auto;
+  margin: 20 auto;
 }
 
 .profile-name {
