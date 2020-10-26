@@ -6,7 +6,69 @@
     </div>
     <div class="col s12 m8 l9">
 
-      <div class="col s12 m12 l10">
+      <div class="collection col s12 m12 l10">
+        <div class="collection-item avatar">
+          <img src="https://cdn.costumewall.com/wp-content/uploads/2018/09/mr-peanutbutter.jpg" alt="" class="circle" />
+          <span class="title">{{postOwner}}</span>
+          <p class="time">
+            {{TimeFromNow(post.created)}} |
+            Dhaka
+          </p>
+          <!-- <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a> -->
+        </div>
+        <div class="collection-item">
+          <div class="card-content">
+            <p>{{post.post}}&#x2764;</p>
+          </div>
+          <div class="card-image">
+            <!-- <img class="postImage"
+                                                                src="https://www.euractiv.com/wp-content/uploads/sites/2/2019/09/shutterstock_438538876-800x450.jpg" /> -->
+          </div>
+          <div class="card-action">
+            <i (click)="LikePost(post)" [ngClass]="(!CheckInLikesArray(post.likes, user.username)) ? 'notLiked':'liked'"
+              class="material-icons">thumb_up</i>
+            <span class="iconSpan">
+              {{post.totalLikes}}
+            </span>
+            <i class="material-icons"
+              [ngClass]="(!CheckInLikesArray(post.comments, user.username)) ? 'notLiked':'liked'">chat</i>
+            <span class="iconSpan">
+              {{post.comments.length }}
+            </span>
+            <!-- <app-comments *ngIf="commentIcon"></app-comments> -->
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12">
+            <div class="postDiv">
+              <ul class="col s12 m10" *ngFor="let comment of commentsArray">
+                <li class="collection-item avatar">
+                  <img src="https://cdn.costumewall.com/wp-content/uploads/2018/09/mr-peanutbutter.jpg" alt=""
+                    class="circle" />
+                  <span class="title">{{comment.username}}</span>
+                  <p class="postComment">{{comment.comment}}</p>
+                  <p class="time">{{TimeFromNow(comment.createdAt)}}</p>
+                </li>
+              </ul>
+              <div class="card-content">
+                <form [formGroup]="commentForm" (ngSubmit)="AddComment()">
+                  <div class="formDiv">
+                    <textarea formControlName="comment" class="materialize-textarea"></textarea>
+                    <button class="btn postBtn" type="submit" name="action" [disabled]="!commentForm.valid">Add
+                      Comment
+                      <i class="material-icons right">send</i>
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <!-- <div class="col s12 m12 l10">
         <div class="row">
           <div class="card">
             <ul class="collection">
@@ -39,7 +101,7 @@
           <p class="time">{{TimeFromNow(comment.createdAt)}}</p>
           <p class="postComment">{{comment.comment}}</p>
         </li>
-      </ul>
+      </ul> -->
     </div>
   </div>
 </div>

@@ -6,6 +6,7 @@ import io from 'socket.io-client';
 import * as moment from 'moment';
 import _ from 'lodash'
 import { TokenService } from 'src/app/services/token.service';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-comments',
@@ -20,18 +21,23 @@ export class CommentsComponent implements OnInit, AfterViewInit {
   postId: any;
   commentsArray = [];
   post: any;
+  postOwner: any;
+  x: any;
 
   constructor(
     private formbuilder: FormBuilder,
     private postService: PostService,
     private route: ActivatedRoute,
-    private tokenService: TokenService
+    private tokenService: TokenService,
+    private userService: UsersService
   ) {
     this.socket = io('http://localhost:3000')
    }
 
   ngOnInit() {
     this.user = this.tokenService.GetPayload();
+    console.log(this.user);
+
     this.toolbarElement = document.querySelector('.nav-content');
     this.postId = this.route.snapshot.paramMap.get('id');
     this.init();
@@ -63,11 +69,14 @@ export class CommentsComponent implements OnInit, AfterViewInit {
 
   GetPost() {
     this.postService.getPost(this.postId).subscribe(data => {
-      //console.log(" okay ", data);
+      console.log(data);
       this.post = data.post;
-      console.log(data.post);
+      this.commentsArray = data.post.comments;
+      this.userService.GetUserByUserName(data.post.username).subscribe(data => {
+        this.postOwner = data.result.name;
+        console.log(this.postOwner);
 
-      this.commentsArray = data.post.comments.reverse();
+      })
       //console.log(this.commentsArray);
     })
   }
@@ -88,4 +97,20 @@ export class CommentsComponent implements OnInit, AfterViewInit {
     return _.some(arr, { username: username });
   }
 
+  a(username){
+    return this.getName(username);
+  }
+
+  getName(username){
+  this.x = this.userService.GetUserByUserName(username)
+      .subscribe(data => {
+        console.log(data.result.name);
+        return data.result.name;
+      });
+  }
+
+
+  public ngOnDestroy(): void {
+      this.x.unsubscribe();
+  }
 }
