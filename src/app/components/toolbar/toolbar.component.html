@@ -1,54 +1,59 @@
-<nav class="nav-extended">
-  <div class="container">
-    <div class="nav-wrapper">
-      <a (click)="GoToHome()" class="brand-logo">Virtual Station</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li>
-          <a class="dropdown-trigger transparent" href="#!" data-target="dropdown2">
-            <i class="material-icons">notifications
-              <small class="notification-badge" *ngIf="count.length > 0">{{count.length}}</small>
-            </i>
-          </a>
-          <!-- NOTIFICATIONS -->
-          <ul id="dropdown2" class="dropdown-content col s12 collection">
-            <li class="collection-item avatar" *ngFor="let data of notifications">
-              <img
-                src="http://res.cloudinary.com/ratingapp/image/upload/v{{data.senderId.picVersion}}/{{data.senderId.picId}}"
-                class="circle">
-              <span [ngClass]="data.read ? 'isRead' : 'unread' ">{{data.message}}
-                <!-- <span *ngIf="!data.read" class="new badge">1</span> -->
-              </span>
-              <p class="time">{{TimeFromNow(data.created)}}</p>
-            </li>
-            <li *ngIf="notifications.length <= 0">
-              <p class="text">No Notification</p>
-            </li>
-            <p class="secondary-content">
-              <a class="markAll btn" (click)="MarkAll()">Mark All As Read</a>
-            </p>
-          </ul>
-        </li>
+<div class="navbar-fixed">
+  <nav class="nav-extended">
+    <div class="container">
+      <div class="nav-wrapper navbar-fixed">
+        <a (click)="GoToHome()" class="brand-logo">Virtual Station</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li>
+            <a class="dropdown-trigger transparent" href="#!" data-target="dropdown2">
+              <i class="material-icons">notifications
+                <small class="notification-badge" *ngIf="count.length > 0">{{count.length}}</small>
+              </i>
+            </a>
+            <!-- NOTIFICATIONS -->
+            <ul id="dropdown2" class="dropdown-content col s12 collection">
+              <li class="collection-item avatar" *ngFor="let data of notifications">
+                <img
+                  src="http://res.cloudinary.com/ratingapp/image/upload/v{{data.senderId.picVersion}}/{{data.senderId.picId}}"
+                  class="circle">
+                <span [ngClass]="data.read ? 'isRead' : 'unread' ">{{data.message}}
+                  <!-- <span *ngIf="!data.read" class="new badge">1</span> -->
+                </span>
+                <p class="time">{{TimeFromNow(data.created)}}</p>
+              </li>
+              <li *ngIf="notifications.length <= 0">
+                <p class="text">No Notification</p>
+              </li>
+              <p class="secondary-content">
+                <a class="markAll btn" (click)="MarkAll()">Mark All As Read</a>
+              </p>
+            </ul>
+          </li>
 
-        <li>
-          <a class='dropdown-button transparent' href='#' data-target="dropdown1"><i
-              class="material-icons">account_box</i></a>
+          <li>
+            <a class='dropdown-button transparent' href='#' data-target="dropdown1"><i
+                class="material-icons">account_box</i></a>
 
-          <!-- Dropdown Structure -->
-          <ul id="dropdown1" class="dropdown-content col s12 collection">
-            <li><a>Profile</a></li>
-            <li><a (click)="logout()">Logout</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-    <div class="nav-content">
-      <div class="nav-div">
-        <!-- <img class="circle responsive-img" src="http://placehold.it/50x50" /> -->
-        <img src="https://cdn.costumewall.com/wp-content/uploads/2018/09/mr-peanutbutter.jpg" alt=""
-          class="circle responsive-img" />
+            <!-- Dropdown Structure -->
+            <ul id="dropdown1" class="dropdown-content col s12 collection">
+              <li><a>Profile</a></li>
+              <li><a (click)="logout()">Logout</a></li>
+            </ul>
+          </li>
+        </ul>
       </div>
-      <h1 class="profile-name">{{ user.name }}</h1>
-      <p class="user-text">testing bio...</p>
     </div>
+  </nav>
+</div>
+
+<nav class="nav-extended">
+  <div class="nav-content">
+    <div class="nav-div">
+      <!-- <img class="circle responsive-img" src="http://placehold.it/50x50" /> -->
+      <img src="https://cdn.costumewall.com/wp-content/uploads/2018/09/mr-peanutbutter.jpg" alt=""
+        class="circle responsive-img" />
+    </div>
+    <h1 class="profile-name">{{ user.name }}</h1>
+    <p class="user-text">testing bio...</p>
   </div>
 </nav>
