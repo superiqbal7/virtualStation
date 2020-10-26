@@ -15,8 +15,7 @@
           <p>{{post.post}}&#x2764;</p>
         </div>
         <div class="card-image">
-          <img class="postImage"
-            src="https://www.euractiv.com/wp-content/uploads/sites/2/2019/09/shutterstock_438538876-800x450.jpg" />
+          <img src="https://cdn.costumewall.com/wp-content/uploads/2018/09/mr-peanutbutter.jpg" alt="" class="circle" />
         </div>
         <div class="card-action">
           <i (click)="LikePost(post)" [ngClass]="(!CheckInLikesArray(post.likes, user.username)) ? 'notLiked':'liked'"
