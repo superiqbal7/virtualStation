@@ -1,0 +1,46 @@
+.tabs a {
+  color: #110a36;
+  font-weight: bold;
+  font-size: 10px;
+}
+
+.tabs .active {
+  background: inherit !important;
+}
+
+/* ----- */
+// $colors: (
+//   irenic: #07beb8,
+//   serene: #3dccc7,
+//   tranquil: #68d8d6,
+//   calm: #9ceaef,
+//   cool: #acece9,
+//   ice: #ffffff,
+//   base: #454749,
+// );
+
+// @function color($key: "calm") {
+//   @return map-get($colors, $key);
+// }
+
+// .body {
+//   //background: linear-gradient(to bottom right, color("ice"), color("cool"));
+//   background: linear-gradient(45deg, rgb(107, 214, 214), rgb(255, 255, 255));
+//   animation: hue 10000ms infinite linear;
+// }
+
+// -----------
+// .body {
+//   filter: hue-rotate(0deg);
+//   background: linear-gradient(45deg, rgb(107, 214, 214), rgb(255, 255, 255));
+//   animation: hue 10000ms infinite linear;
+// }
+
+// @keyframes hue {
+//   0% {
+//     filter: hue-rotate(0deg);
+//   }
+//   100% {
+//     filter: hue-rotate(360deg);
+//   }
+// }
