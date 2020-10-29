@@ -17,11 +17,14 @@ import { FollowingComponent } from '../../components/following/following.compone
 import { FollowersComponent } from '../../components/followers/followers.component';
 import { NotificationsComponent } from '../../components/notifications/notifications.component';
 import { TopStreamsComponent } from '../../components/top-streams/top-streams.component';
+import { ChatComponent } from '../../components/chat/chat.component';
+import { MessageComponent } from '../../components/message/message.component';
+import { MessageService } from 'src/app/services/message.service';
 
 
 
 @NgModule({
-  declarations: [StreamsComponent, ToolbarComponent, SideComponent, PostFormComponent, PostsComponent, CommentsComponent, PeopleComponent, FollowingComponent, FollowersComponent, NotificationsComponent, TopStreamsComponent,],
+  declarations: [StreamsComponent, ToolbarComponent, SideComponent, PostFormComponent, PostsComponent, CommentsComponent, PeopleComponent, FollowingComponent, FollowersComponent, NotificationsComponent, TopStreamsComponent, ChatComponent, MessageComponent,],
   imports: [
     CommonModule,
     FormsModule,
@@ -29,7 +32,7 @@ import { TopStreamsComponent } from '../../components/top-streams/top-streams.co
     HttpClientModule,
     RouterModule
   ],
-  exports: [StreamsComponent, ToolbarComponent, SideComponent, PostFormComponent, CommentsComponent, PeopleComponent, FollowingComponent, FollowersComponent, NotificationsComponent],
-  providers: [TokenService, PostService, UsersService]
+  exports: [StreamsComponent, ToolbarComponent, SideComponent, PostFormComponent, CommentsComponent, PeopleComponent, FollowingComponent, FollowersComponent, NotificationsComponent, ChatComponent, MessageComponent],
+  providers: [TokenService, PostService, UsersService, MessageService]
 })
 export class StreamsModule { }
