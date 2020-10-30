@@ -13,13 +13,44 @@
             <!-- NOTIFICATIONS -->
             <ul id="dropdown2" class="dropdown-content col s12 collection">
               <li class="collection-item avatar" *ngFor="let data of notifications">
-                <img
-                  src="http://res.cloudinary.com/ratingapp/image/upload/v{{data.senderId.picVersion}}/{{data.senderId.picId}}"
-                  class="circle">
+                <img src="" class="circle">
                 <span [ngClass]="data.read ? 'isRead' : 'unread' ">{{data.message}}
                   <!-- <span *ngIf="!data.read" class="new badge">1</span> -->
                 </span>
                 <p class="time">{{TimeFromNow(data.created)}}</p>
+              </li>
+              <li *ngIf="notifications.length <= 0">
+                <p class="text">No Notification</p>
+              </li>
+              <p class="secondary-content">
+                <a class="markAll btn" (click)="MarkAll()">Mark All As Read</a>
+              </p>
+            </ul>
+          </li>
+
+          <li>
+            <a class="dropdown-trigger3 transparent" href="#!" data-target="dropdown3">
+              <i class="material-icons">message
+                <small class="notification-badge" *ngIf="">{{count.length}}</small>
+              </i>
+            </a>
+            <!-- Meaasge Notification -->
+            <ul id="dropdown3" class="dropdown-content col s12 collection">
+              <li class="collection-item avatar" *ngFor="let chat of chatList">
+                <img src="" class="circle">
+                <span class="title">{{chat.receiverId.name}}
+                  <a
+                    class="secondary-content">{{MessageDate(chat.msgId.message[chat.msgId.message.length-1].createdAt)}}</a>
+                </span>
+                <p class="time">
+                  {{MessageDate(chat.msgId.message[chat.msgId.message.length-1].body)}}
+                  <a class="secondary-content">
+                    <i class="material-icons">brightness_1</i>
+                  </a>
+                  <a class="secondary-content">
+                    <i class="material-icons">panorama_fish_eye</i>
+                  </a>
+                </p>
               </li>
               <li *ngIf="notifications.length <= 0">
                 <p class="text">No Notification</p>
