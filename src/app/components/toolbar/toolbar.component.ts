@@ -16,6 +16,7 @@ export class ToolbarComponent implements OnInit {
   notifications = [];
   socket: any;
   count = [];
+  chatList = [];
 
   constructor(
     private tokenService: TokenService,
@@ -30,16 +31,23 @@ export class ToolbarComponent implements OnInit {
     //console.log(this.user);
 
 
-    const dropDownElement = document.querySelector('.dropdown-trigger');
+    const dropDownElement = document.querySelectorAll('.dropdown-trigger');
     M.Dropdown.init(dropDownElement, {
       allignment: 'right',
       hover: false,
       coverTrigger: false
     })
 
+    const dropDownElement3 = document.querySelectorAll('.dropdown-trigger3');
+    M.Dropdown.init(dropDownElement3, {
+      allignment: 'left',
+      hover: false,
+      coverTrigger: false
+    })
+
     const dropDownElement2 = document.querySelector('.dropdown-button');
     M.Dropdown.init(dropDownElement2,{
-      allignment: 'right',
+      allignment: 'left',
       hover: false,
       coverTrigger: false,
     }
@@ -55,8 +63,10 @@ export class ToolbarComponent implements OnInit {
     this.userService.GetUserById(this.user._id).subscribe(data => {
       this.notifications = data.result.notifications.reverse();
       const value = _.filter(this.notifications, ['read', false]);
-      console.log(value);
       this.count = value;
+      this.chatList = data.result.chatList;
+      console.log(this.chatList);
+
     },
     //reload if token expired
     err => {
@@ -85,5 +95,14 @@ export class ToolbarComponent implements OnInit {
     this.userService.MarkAllAsRead().subscribe(data => {
       this.socket.emit('refresh', {});
     });
+  }
+
+  MessageDate(data) {
+    return moment(data).calendar(null, {
+      sameDay: '[Today]',
+      lastDay: '[Yesterday]',
+      lastWeek: 'DD/MM/YYYY',
+      sameElse: 'DD/MM/YYYY'
+    })
   }
 }
