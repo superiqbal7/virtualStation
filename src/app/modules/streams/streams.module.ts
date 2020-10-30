@@ -20,6 +20,7 @@ import { TopStreamsComponent } from '../../components/top-streams/top-streams.co
 import { ChatComponent } from '../../components/chat/chat.component';
 import { MessageComponent } from '../../components/message/message.component';
 import { MessageService } from 'src/app/services/message.service';
+import { NgxAutoScrollModule } from 'ngx-auto-scroll';
 
 
 
@@ -30,7 +31,8 @@ import { MessageService } from 'src/app/services/message.service';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    NgxAutoScrollModule
   ],
   exports: [StreamsComponent, ToolbarComponent, SideComponent, PostFormComponent, CommentsComponent, PeopleComponent, FollowingComponent, FollowersComponent, NotificationsComponent, ChatComponent, MessageComponent],
   providers: [TokenService, PostService, UsersService, MessageService]
