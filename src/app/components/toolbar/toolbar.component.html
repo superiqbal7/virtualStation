@@ -29,25 +29,30 @@
           </li>
 
           <li>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </li>
+
+          <li>
             <a class="dropdown-trigger3 transparent" href="#!" data-target="dropdown3">
               <i class="material-icons">message
-                <small class="notification-badge" *ngIf="">{{count.length}}</small>
+                <small class="notification-badge" *ngIf="msgNumber>0">{{msgNumber}}</small>
               </i>
             </a>
             <!-- Meaasge Notification -->
             <ul id="dropdown3" class="dropdown-content col s12 collection">
-              <li class="collection-item avatar" *ngFor="let chat of chatList">
+              <li class="collection-item avatar" *ngFor="let chat of chatList"
+                [routerLink]="['/chat', chat.receiverId.username]">
                 <img src="" class="circle">
                 <span class="title">{{chat.receiverId.name}}
                   <a
                     class="secondary-content">{{MessageDate(chat.msgId.message[chat.msgId.message.length-1].createdAt)}}</a>
                 </span>
-                <p class="time">
-                  {{MessageDate(chat.msgId.message[chat.msgId.message.length-1].body)}}
-                  <a class="secondary-content">
+                <p>
+                  {{chat.msgId.message[chat.msgId.message.length-1].body}}
+                  <a class="secondary-content" *ngIf="!chat.msgId.message[chat.msgId.message.length-1].isRead">
                     <i class="material-icons">brightness_1</i>
                   </a>
-                  <a class="secondary-content">
+                  <a class="secondary-content" *ngIf="chat.msgId.message[chat.msgId.message.length-1].isRead">
                     <i class="material-icons">panorama_fish_eye</i>
                   </a>
                 </p>
@@ -59,6 +64,10 @@
                 <a class="markAll btn" (click)="MarkAll()">Mark All As Read</a>
               </p>
             </ul>
+          </li>
+
+          <li>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </li>
 
           <li>
