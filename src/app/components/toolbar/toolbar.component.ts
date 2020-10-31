@@ -17,6 +17,7 @@ export class ToolbarComponent implements OnInit {
   socket: any;
   count = [];
   chatList = [];
+  msgNumber: any;
 
   constructor(
     private tokenService: TokenService,
@@ -47,7 +48,7 @@ export class ToolbarComponent implements OnInit {
 
     const dropDownElement2 = document.querySelector('.dropdown-button');
     M.Dropdown.init(dropDownElement2,{
-      allignment: 'left',
+      allignment: 'right',
       hover: false,
       coverTrigger: false,
     }
@@ -65,8 +66,7 @@ export class ToolbarComponent implements OnInit {
       const value = _.filter(this.notifications, ['read', false]);
       this.count = value;
       this.chatList = data.result.chatList;
-      console.log(this.chatList);
-
+      this.CheckIfRead(this.chatList);
     },
     //reload if token expired
     err => {
@@ -104,5 +104,18 @@ export class ToolbarComponent implements OnInit {
       lastWeek: 'DD/MM/YYYY',
       sameElse: 'DD/MM/YYYY'
     })
+  }
+
+  CheckIfRead(arr){
+    const checkArr = [];
+    for(let i = 0; i<arr.length; i++){
+      const receiver = arr[i].msgId.message[arr[i].msgId.message.length -1];
+      if(this.router.url !== `/chat/${receiver.sendername}`){
+        if(receiver.isRead === false && receiver.receiverName === this.user.username){
+          checkArr.push(1);
+          this.msgNumber = _.sum(checkArr);
+        }
+      }
+    }
   }
 }
