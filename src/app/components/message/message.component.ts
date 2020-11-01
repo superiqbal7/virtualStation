@@ -4,11 +4,13 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { MessageService } from 'src/app/services/message.service';
 import { TokenService } from 'src/app/services/token.service';
 import io from 'socket.io-client';
+import { CaretEvent,EmojiEvent, EmojiPickerOptions } from 'ng2-emoji-picker';
+
 
 @Component({
   selector: 'app-message',
   templateUrl: './message.component.html',
-  styleUrls: ['./message.component.css']
+  styleUrls: ['./message.component.scss',]
 })
 export class MessageComponent implements OnInit, AfterViewInit {
 
@@ -20,6 +22,18 @@ export class MessageComponent implements OnInit, AfterViewInit {
   socket: any;
   typingMessage: any;
   typing: boolean = false;
+  showEmojiPicker = false;
+
+  //emoji variables
+   eventMock;
+   eventPosMock;
+
+   direction = Math.random() > 0.5 ? (Math.random() > 0.5 ? 'top' : 'bottom') : (Math.random() > 0.5 ? 'right' : 'left');
+   toggled = false;
+   content = ' ';
+
+  private _lastCaretEvent: CaretEvent;
+  //----
 
   constructor(
     private tokenService: TokenService,
@@ -107,5 +121,25 @@ export class MessageComponent implements OnInit, AfterViewInit {
       });
     }, 500);
   }
+  //---------------------Emoji---------
+
+  toggleEmojiPicker() {
+    this.toggled = !this.toggled;
+  }
+
+  HandleSelection(event: EmojiEvent) {
+    this.content = this.content.slice(0, this._lastCaretEvent.caretOffset) + event.char + this.content.slice(this._lastCaretEvent.caretOffset);
+    this.eventMock = JSON.stringify(event);
+
+    this.message = this.content;
+    this.toggled = !this.toggled;
+    this.content = '';
+  }
+
+  HandleCurrentCaret(event: CaretEvent) {
+    this._lastCaretEvent = event;
+    this.eventPosMock = `{ caretOffset : ${event.caretOffset}, caretRange: Range{...}, textContent: ${event.textContent} }`;
+  }
+
 
 }
