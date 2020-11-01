@@ -35,13 +35,13 @@
           <li>
             <a class="dropdown-trigger3 transparent" href="#!" data-target="dropdown3">
               <i class="material-icons">message
-                <small class="notification-badge" *ngIf="msgNumber>0">{{msgNumber}}</small>
+                <small class="notification-badge" *ngIf="messageCount>0">{{messageCount}}</small>
               </i>
             </a>
             <!-- Meaasge Notification -->
             <ul id="dropdown3" class="dropdown-content col s12 collection">
               <li class="collection-item avatar" *ngFor="let chat of chatList"
-                [routerLink]="['/chat', chat.receiverId.username]">
+                (click)="GoToChatPage(chat.receiverId.username)">
                 <img src="" class="circle">
                 <span class="title">{{chat.receiverId.name}}
                   <a
@@ -49,7 +49,8 @@
                 </span>
                 <p>
                   {{chat.msgId.message[chat.msgId.message.length-1].body}}
-                  <a class="secondary-content" *ngIf="!chat.msgId.message[chat.msgId.message.length-1].isRead">
+                  <a class="secondary-content"
+                    *ngIf="!chat.msgId.message[chat.msgId.message.length-1].isRead  && chat.receiverId.username !== chat.msgId.message[chat.msgId.message.length-1].receiverName">
                     <i class="material-icons">brightness_1</i>
                   </a>
                   <a class="secondary-content" *ngIf="chat.msgId.message[chat.msgId.message.length-1].isRead">
@@ -61,7 +62,7 @@
                 <p class="text">No Notification</p>
               </li>
               <p class="secondary-content">
-                <a class="markAll btn" (click)="MarkAll()">Mark All As Read</a>
+                <a class="markAll btn" (click)="MarkAllMessages()">Mark All As Read</a>
               </p>
             </ul>
           </li>
