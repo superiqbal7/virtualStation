@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+"use strict";
+import { Component, OnInit, AfterViewInit, Output, EventEmitter } from '@angular/core';
 import { TokenService } from 'src/app/services/token.service';
 import { Router } from '@angular/router';
 import * as M from 'materialize-css';
@@ -6,23 +7,26 @@ import { UsersService } from 'src/app/services/users.service';
 import * as moment from 'moment';
 import io from 'socket.io-client';
 import _ from 'lodash';
+import { MessageService } from 'src/app/services/message.service';
 @Component({
   selector: 'app-toolbar',
   templateUrl: './toolbar.component.html',
   styleUrls: ['./toolbar.component.scss']
 })
-export class ToolbarComponent implements OnInit {
+export class ToolbarComponent implements OnInit, AfterViewInit {
+  //@Output() onlineUsers = new EventEmitter();
   user: any;
   notifications = [];
   socket: any;
   count = [];
   chatList = [];
-  msgNumber: any;
+  messageCount: any;
 
   constructor(
     private tokenService: TokenService,
     protected router: Router,
-    private userService: UsersService
+    private userService: UsersService,
+    private messageService: MessageService
   ) {
     this.socket = io('http://localhost:3000');
    }
@@ -37,26 +41,35 @@ export class ToolbarComponent implements OnInit {
       allignment: 'right',
       hover: false,
       coverTrigger: false
-    })
+    });
 
     const dropDownElement3 = document.querySelectorAll('.dropdown-trigger3');
     M.Dropdown.init(dropDownElement3, {
       allignment: 'left',
       hover: false,
       coverTrigger: false
-    })
+    });
 
     const dropDownElement2 = document.querySelector('.dropdown-button');
     M.Dropdown.init(dropDownElement2,{
       allignment: 'right',
       hover: false,
       coverTrigger: false,
-    }
-  );
+    });
+
+    this.socket.emit('online', { room: 'global', user: this.user.username });
 
     this.GetNotifications();
     this.socket.on('refreshPage', () => {
       this.GetNotifications();
+    })
+  };
+
+  ngAfterViewInit(){
+    //online user info
+    this.socket.on('usersOnline', (data)=>{
+      //sending online user data to another component
+      //this.onlineUsers.emit(data);
     })
   }
 
@@ -87,6 +100,14 @@ export class ToolbarComponent implements OnInit {
     this.router.navigate(['streams']);
   }
 
+  GoToChatPage(name){
+    this.router.navigate(['chat', name]);
+    this.messageService.MarkMessages(this.user.username, name).subscribe(data => {
+      console.log(data);
+      this.socket.emit('refresh', {});
+    })
+  }
+
   TimeFromNow(time){
     return moment(time).fromNow();
   }
@@ -95,6 +116,14 @@ export class ToolbarComponent implements OnInit {
     this.userService.MarkAllAsRead().subscribe(data => {
       this.socket.emit('refresh', {});
     });
+  }
+
+  MarkAllMessages(){
+    this.messageService.MarkAllMessages().subscribe(data => {
+      console.log(data);
+      this.socket.emit('refresh', {});
+      this.messageCount = 0;
+    })
   }
 
   MessageDate(data) {
@@ -113,7 +142,7 @@ export class ToolbarComponent implements OnInit {
       if(this.router.url !== `/chat/${receiver.sendername}`){
         if(receiver.isRead === false && receiver.receiverName === this.user.username){
           checkArr.push(1);
-          this.msgNumber = _.sum(checkArr);
+          this.messageCount = _.sum(checkArr);
         }
       }
     }
