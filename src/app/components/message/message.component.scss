@@ -106,15 +106,14 @@ input,
 textarea,
 .item-input,
 .item-input-wrapper {
-  background: #07406e;
-  height: 38px;
+  height: auto;
 }
 .text-input {
   background: transparent !important;
 }
 .bold {
   font-weight: bold;
-  color: white;
+  color: rgb(0, 0, 0);
 }
 .boldLeft {
   color: red;
@@ -199,7 +198,7 @@ emoji-content {
 }
 
 .inputBox {
-  color: white;
+  color: rgb(82, 82, 82);
   padding: 10px;
 }
 
