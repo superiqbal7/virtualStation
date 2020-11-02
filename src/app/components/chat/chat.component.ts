@@ -8,6 +8,7 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 export class ChatComponent implements OnInit, AfterViewInit {
 
   tabElement: any;
+  online_Users = [];
 
   constructor() { }
 
@@ -18,6 +19,10 @@ export class ChatComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.tabElement.style.display = 'none';
+  }
+
+  online(event){
+    this.online_Users = event;
   }
 
 }
