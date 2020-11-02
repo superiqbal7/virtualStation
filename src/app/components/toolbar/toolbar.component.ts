@@ -14,7 +14,7 @@ import { MessageService } from 'src/app/services/message.service';
   styleUrls: ['./toolbar.component.scss']
 })
 export class ToolbarComponent implements OnInit, AfterViewInit {
-  //@Output() onlineUsers = new EventEmitter();
+  @Output() onlineUsers = new EventEmitter();
   user: any;
   notifications = [];
   socket: any;
@@ -69,7 +69,7 @@ export class ToolbarComponent implements OnInit, AfterViewInit {
     //online user info
     this.socket.on('usersOnline', (data)=>{
       //sending online user data to another component
-      //this.onlineUsers.emit(data);
+      this.onlineUsers.emit(data);
     })
   }
 
