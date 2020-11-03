@@ -4,7 +4,8 @@
       <div class="card">
         <div class="valign-wrapper #01579b light-blue darken-4">
           <div class="col s12 imgCol">
-            <img src="http://placehold.it/50x50" alt="" class="circle">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01_green.jpg" alt="avatar"
+              class="circle" />
           </div>
           <div class="row">
             <div class="col s10 nameCol">
@@ -56,6 +57,7 @@
             <div class="input-field col s1">
               <button type="button" class="toggle-emoji emojiBtn" (click)="toggleEmojiPicker()">
                 <i class="material-icons">mood</i>
+                <!-- <emoji-mart title="Pick your emoji…" emoji="point_up"></emoji-mart> -->
               </button>
               <div class="emoji-content-editable" (emojiPickerCaretEmitter)="HandleCurrentCaret($event)"
                 (input)="content = $event.target.textContent" [textContent]="content" contenteditable="true"></div>
