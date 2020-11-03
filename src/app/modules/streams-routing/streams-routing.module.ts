@@ -8,8 +8,13 @@ import { FollowingComponent } from 'src/app/components/following/following.compo
 import { FollowersComponent } from 'src/app/components/followers/followers.component';
 import { NotificationsComponent } from 'src/app/components/notifications/notifications.component';
 import { ChatComponent } from 'src/app/components/chat/chat.component';
+import { HomepageComponent } from 'src/app/components/homepage/homepage.component';
 
 const routes: Routes = [
+  {
+    path: 'chat/:name',
+    component: HomepageComponent,
+  },
   {
     path: 'streams',
     component: StreamsComponent,
@@ -40,11 +45,11 @@ const routes: Routes = [
     component: NotificationsComponent,
     canActivate: [AuthGuard]
   },
-  {
-    path: 'chat/:name',
-    component: ChatComponent,
-    canActivate: [AuthGuard]
-  }
+  // {
+  //   path: 'chat/:name',
+  //   component: ChatComponent,
+  //   canActivate: [AuthGuard]
+  // }
 ]
 
 @NgModule({
