@@ -23,10 +23,12 @@ import { MessageService } from 'src/app/services/message.service';
 import { NgxAutoScrollModule } from 'ngx-auto-scroll';
 import { PickerModule } from '@ctrl/ngx-emoji-mart';
 import { EmojiPickerModule } from 'ng2-emoji-picker';
+import { HomepageComponent } from 'src/app/components/homepage/homepage.component';
+import { ChatModule } from '../chat/chat.module';
 
 
 @NgModule({
-  declarations: [StreamsComponent, ToolbarComponent, SideComponent, PostFormComponent, PostsComponent, CommentsComponent, PeopleComponent, FollowingComponent, FollowersComponent, NotificationsComponent, TopStreamsComponent, ChatComponent, MessageComponent,],
+  declarations: [StreamsComponent, ToolbarComponent, SideComponent, PostFormComponent, PostsComponent, CommentsComponent, PeopleComponent, FollowingComponent, FollowersComponent, NotificationsComponent, TopStreamsComponent, ChatComponent, MessageComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -35,7 +37,7 @@ import { EmojiPickerModule } from 'ng2-emoji-picker';
     RouterModule,
     NgxAutoScrollModule,
     PickerModule,
-    EmojiPickerModule.forRoot()
+    EmojiPickerModule.forRoot(),
   ],
   exports: [StreamsComponent, ToolbarComponent, SideComponent, PostFormComponent, CommentsComponent, PeopleComponent, FollowingComponent, FollowersComponent, NotificationsComponent, ChatComponent, MessageComponent],
   providers: [TokenService, PostService, UsersService, MessageService]
