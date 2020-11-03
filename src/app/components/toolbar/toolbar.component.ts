@@ -127,12 +127,13 @@ export class ToolbarComponent implements OnInit, AfterViewInit {
   }
 
   MessageDate(data) {
-    return moment(data).calendar(null, {
-      sameDay: '[Today]',
-      lastDay: '[Yesterday]',
-      lastWeek: 'DD/MM/YYYY',
-      sameElse: 'DD/MM/YYYY'
-    })
+    // return moment(data).calendar(null, {
+    //   sameDay: '[Today]',
+    //   lastDay: '[Yesterday]',
+    //   lastWeek: 'DD/MM/YYYY',
+    //   sameElse: 'DD/MM/YYYY'
+    // })
+    return moment(data).fromNow()
   }
 
   CheckIfRead(arr){
