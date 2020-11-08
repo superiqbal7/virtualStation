@@ -6,13 +6,14 @@ import io from 'socket.io-client';
 @Component({
   selector: 'app-people',
   templateUrl: './people.component.html',
-  styleUrls: ['./people.component.css']
+  styleUrls: ['./people.component.scss']
 })
 export class PeopleComponent implements OnInit {
   users = [];
   loggedInUser: any;
   userArr = [];
   socket: any;
+  onlineUsers: any = [];
 
   constructor(
     private userService: UsersService,
@@ -69,6 +70,19 @@ export class PeopleComponent implements OnInit {
       return true;
     }
     else return false;
+  }
+
+  online(event){
+    this.onlineUsers = event;
+  }
+
+  CheckIfOnline(name){
+    const result = _.indexOf(this.onlineUsers, name);
+    if(result > -1){
+      return true;
+    }else{
+      return false;
+    }
   }
 
 }
