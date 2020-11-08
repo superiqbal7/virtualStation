@@ -73,12 +73,19 @@ export class MessageComponent implements OnInit, AfterViewInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges){
+    const title = document.querySelector('.nameCol');
     if (changes.usersOnline.currentValue.length > 0){
       const result = _.indexOf(changes.usersOnline.currentValue, this.receiverName)
       if(result > -1){
         this.isOnline = true;
+
+        //
+        (title as HTMLElement).style.marginTop = '10px';
       } else{
         this.isOnline = false;
+
+        //
+        (title as HTMLElement).style.marginTop = '20px';
       }
     }
 
