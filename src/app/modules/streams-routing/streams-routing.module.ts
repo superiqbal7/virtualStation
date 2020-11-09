@@ -9,6 +9,7 @@ import { FollowersComponent } from 'src/app/components/followers/followers.compo
 import { NotificationsComponent } from 'src/app/components/notifications/notifications.component';
 import { ChatComponent } from 'src/app/components/chat/chat.component';
 import { HomepageComponent } from 'src/app/components/homepage/homepage.component';
+import { ImagesComponent } from 'src/app/components/images/images.component';
 
 const routes: Routes = [
   {
@@ -50,6 +51,15 @@ const routes: Routes = [
   //   component: ChatComponent,
   //   canActivate: [AuthGuard]
   // }
+  {
+    path: 'images/:name',
+    component: ImagesComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: '**',
+    redirectTo:'streams'
+  }
 ]
 
 @NgModule({
