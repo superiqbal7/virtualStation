@@ -25,10 +25,11 @@ import { PickerModule } from '@ctrl/ngx-emoji-mart';
 import { EmojiPickerModule } from 'ng2-emoji-picker';
 import { HomepageComponent } from 'src/app/components/homepage/homepage.component';
 import { ChatModule } from '../chat/chat.module';
+import { ImagesComponent } from '../../components/images/images.component';
 
 
 @NgModule({
-  declarations: [StreamsComponent, ToolbarComponent, SideComponent, PostFormComponent, PostsComponent, CommentsComponent, PeopleComponent, FollowingComponent, FollowersComponent, NotificationsComponent, TopStreamsComponent, ChatComponent, MessageComponent],
+  declarations: [StreamsComponent, ToolbarComponent, SideComponent, PostFormComponent, PostsComponent, CommentsComponent, PeopleComponent, FollowingComponent, FollowersComponent, NotificationsComponent, TopStreamsComponent, ChatComponent, MessageComponent, ImagesComponent],
   imports: [
     CommonModule,
     FormsModule,
