@@ -26,7 +26,7 @@ import { EmojiPickerModule } from 'ng2-emoji-picker';
 import { HomepageComponent } from 'src/app/components/homepage/homepage.component';
 import { ChatModule } from '../chat/chat.module';
 import { ImagesComponent } from '../../components/images/images.component';
-
+import { FileUploadModule } from 'ng2-file-upload';
 
 @NgModule({
   declarations: [StreamsComponent, ToolbarComponent, SideComponent, PostFormComponent, PostsComponent, CommentsComponent, PeopleComponent, FollowingComponent, FollowersComponent, NotificationsComponent, TopStreamsComponent, ChatComponent, MessageComponent, ImagesComponent],
@@ -38,6 +38,7 @@ import { ImagesComponent } from '../../components/images/images.component';
     RouterModule,
     NgxAutoScrollModule,
     PickerModule,
+    FileUploadModule,
     EmojiPickerModule.forRoot(),
   ],
   exports: [StreamsComponent, ToolbarComponent, SideComponent, PostFormComponent, CommentsComponent, PeopleComponent, FollowingComponent, FollowersComponent, NotificationsComponent, ChatComponent, MessageComponent],
