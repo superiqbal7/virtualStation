@@ -122,17 +122,19 @@
       </div> <!-- end chat-header -->
 
       <div class="chat-history" ngx-auto-scroll lock-y-offset="10" observe-attributes>
-        <ul id="chatbox" *ngFor="let message of messagesArray">
+        <ul id="chatbox" *ngFor="let message of messagesArray;let last = last;">
           <li class="clearfix" *ngIf="user.username === message.senderName">
             <div class="message-data align-right">
               <span class="message-data-time">{{MessageTime(message.createdAt)}}</span> &nbsp; &nbsp;
               <span class="message-data-name">{{message.senderName}}</span>
-
             </div>
             <div class="message other-message float-right">
               {{message.body}}
             </div>
           </li>
+          <div class="message-data align-right" *ngIf="last && message.isRead">
+            <span class="message-data-name">Seen</span>
+          </div>
 
           <li *ngIf="user.username !== receiverName && user.username != message.senderName">
             <div class="message-data">
@@ -152,6 +154,7 @@
             </div>
           </li> -->
         </ul>
+        <!-- typing notification section -->
         <ul *ngIf="typing">
           <!-- <div class="message-data">
             <span class="message-data-name">{{receiverName}} </span>
@@ -162,7 +165,7 @@
         </ul>
 
       </div> <!-- end chat-history -->
-
+      <!-- send message section -->
       <div class="chat-message clearfix">
         <form (ngSubmit)="SendMessage()">
           <textarea name="message-to-send" id="message-to-send" placeholder="Type your message" rows="3"
