@@ -21,6 +21,8 @@ export class ToolbarComponent implements OnInit, AfterViewInit {
   count = [];
   chatList = [];
   messageCount: any;
+  imageId: any;
+  imageVersion: any;
 
   constructor(
     private tokenService: TokenService,
@@ -75,6 +77,8 @@ export class ToolbarComponent implements OnInit, AfterViewInit {
 
   GetNotifications(){
     this.userService.GetUserById(this.user._id).subscribe(data => {
+      this.imageId = data.result.picId;
+      this.imageVersion = data.result.picVersion;
       this.notifications = data.result.notifications.reverse();
       const value = _.filter(this.notifications, ['read', false]);
       this.count = value;
