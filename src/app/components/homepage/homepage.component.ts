@@ -78,9 +78,7 @@ export class HomepageComponent implements OnInit, AfterViewInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log("dhukse");
     if (changes.online_Users.currentValue.length > 0) {
-      console.log(changes);
 
       const result = _.indexOf(changes.online_Users.currentValue, this.receiverName);
       console.log(result);
