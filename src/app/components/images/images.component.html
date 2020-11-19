@@ -28,7 +28,7 @@
         <div class="col s12 m6 l4" *ngFor="let image of images">
           <div class="item-img-wrap imgDiv">
             <img src="https://res.cloudinary.com/djhzlslux/image/upload/v{{image.imgVersion}}/{{image.imgId}}" alt="">
-            <button class="btn imgBtn">Set as Profile Picture</button>
+            <button class="btn imgBtn" (click)="SetProfileImage(image)">Set as Profile Picture</button>
           </div>
         </div>
       </div>
