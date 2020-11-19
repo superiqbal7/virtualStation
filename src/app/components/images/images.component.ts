@@ -72,6 +72,14 @@ export class ImagesComponent implements OnInit {
     }
   }
 
+  SetProfileImage(image){
+    this.usersService.SetDefaultImage(image.imgId, image.imgVersion).subscribe(data => {
+      this.socket.emit('refresh', {});
+    },
+      err => console.log(err)
+    )
+  }
+
   ReadAsBase64(file): Promise<any> {
     const reader = new FileReader();
     const fileValue = new Promise((resolve, reject) => {
