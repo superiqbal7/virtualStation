@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { FileUploader } from 'ng2-file-upload';
 import { TokenService } from 'src/app/services/token.service';
@@ -28,7 +27,7 @@ export class ImagesComponent implements OnInit {
     private usersService: UsersService,
     private tokenService: TokenService
   ) {
-    this.socket - io('http://localhost:3000');
+    this.socket = io('http://localhost:3000');
    }
 
   ngOnInit() {
