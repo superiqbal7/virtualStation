@@ -13,7 +13,9 @@
             <!-- NOTIFICATIONS -->
             <ul id="dropdown2" class="dropdown-content col s12 collection">
               <li class="collection-item avatar" *ngFor="let data of notifications">
-                <img src="" class="circle">
+                <img
+                  src="https://res.cloudinary.com/djhzlslux/image/upload/v{{data.senderId.picVersion}}/{{data.senderId.picId}}"
+                  class="circle">
                 <span [ngClass]="data.read ? 'isRead' : 'unread' ">{{data.message}}
                   <!-- <span *ngIf="!data.read" class="new badge">1</span> -->
                 </span>
