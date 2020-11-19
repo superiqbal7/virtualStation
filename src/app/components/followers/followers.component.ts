@@ -22,8 +22,6 @@ export class FollowersComponent implements OnInit {
 
   ngOnInit() {
     this.loggedInUser = this.tokenService.GetPayload();
-    console.log(this.loggedInUser);
-
     this.GetUser();
     this.socket.on('refreshPage', ()=> {
       this.GetUser();
@@ -36,9 +34,6 @@ export class FollowersComponent implements OnInit {
         console.log(data);
         this.followers = data.result.followers;
         this.following = data.result.following;
-        console.log(this.followers);
-        console.log(this.followers[0].follower._id);
-
       });
   }
 
