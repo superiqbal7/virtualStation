@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from 'src/app/services/users.service';
 import _ from 'lodash';
@@ -17,7 +18,8 @@ export class PeopleComponent implements OnInit {
 
   constructor(
     private userService: UsersService,
-    private tokenService: TokenService
+    private tokenService: TokenService,
+    private router: Router
   ) {
     this.socket = io('http://localhost:3000');
    }
@@ -58,6 +60,11 @@ export class PeopleComponent implements OnInit {
       // console.log(data);
       this.socket.emit('refresh',{});
     })
+  }
+  ViewUser(user){
+    console.log(user.username);
+
+    this.router.navigate([user.username]);
   }
   //count =0;
   CheckInArray(arr, id) {
