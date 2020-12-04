@@ -10,6 +10,7 @@ import { NotificationsComponent } from 'src/app/components/notifications/notific
 import { ChatComponent } from 'src/app/components/chat/chat.component';
 import { HomepageComponent } from 'src/app/components/homepage/homepage.component';
 import { ImagesComponent } from 'src/app/components/images/images.component';
+import { ViewUserComponent } from 'src/app/components/view-user/view-user.component';
 
 const routes: Routes = [
   {
@@ -54,6 +55,11 @@ const routes: Routes = [
   {
     path: 'images/:name',
     component: ImagesComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: ':name',
+    component: ViewUserComponent,
     canActivate: [AuthGuard]
   },
   {
