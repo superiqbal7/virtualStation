@@ -23,7 +23,7 @@
     "@fortawesome/fontawesome-free": "^5.15.1",
     "lodash": "^4.17.15",
     "materialize-css": "^1.0.0-rc.2",
-    "moment": "^2.26.0",
+    "moment": "^2.29.2",
     "ng2-emoji-picker": "^1.4.8",
     "ng2-file-upload": "^1.4.0",
     "ngx-auto-scroll": "^1.1.0",
